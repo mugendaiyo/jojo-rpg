@@ -1,0 +1,125 @@
+{
+  "Actor": {
+    "types": [
+      "character"
+    ],
+    "templates": {
+      "background": {
+        "biography": "",
+        "appearance": "",
+        "impulses":"",
+        "goals":"",
+        "age":"",
+        "sex":"",
+        "appearancestand": "",
+        "backgroundstand":"",
+        "abilitiesstand":"",
+        "techniquesstand":"",
+        "standname":""
+      }
+    },
+    "character": {
+      "templates": [
+        "background"
+      ],
+      "rankings": {
+        "A": {
+          "label": "A",
+          "dtype": "String"
+        },
+        "B": {
+          "label": "B",
+          "dtype": "String"
+        },
+        "C": {
+          "label": "C",
+          "dtype": "String"
+        },
+        "D": {
+          "label": "D",
+          "dtype": "String"
+        },
+        "E": {
+          "label": "E",
+          "dtype": "String"
+        }
+      },
+      "impulses": "",
+      "goals": "",
+      "canAct" : true,
+      "stamina": {
+        "value": 10,
+        "min": 0,
+        "max": 10
+      },
+      "momentum": {
+        "value": 0,
+        "min": -3,
+        "max": 3
+      },
+      "standImageURL": "",
+      "attributes": {
+        "wounds-light": {
+          "value": 0
+        },
+        "wounds-heavy": {
+          "value": 0
+        },
+        "wounds-major": {
+          "value": 0
+        },
+        "age":{
+          "value": 0
+        },
+        "sex":{
+          "value":""
+        }
+
+      },
+      "rollmodifier": {
+        "value":0
+      },
+      "power": {
+        "value": "",
+        "label": "Power",
+        "modifier": 0
+      },
+      "speed": {
+        "value": "",
+        "label": "Speed",
+        "modifier": []
+      },
+      "durability": {
+        "value": "",
+        "label": "Durability",
+        "modifier": []
+      },
+      "precision": {
+        "value": "",
+        "label": "Precision",
+        "modifier": []
+      },
+      "range": {
+        "value": "",
+        "label": "Range",
+        "modifier": []
+      },
+      "potential": {
+        "value": "",
+        "label": "Potential",
+        "modifier": []
+      }
+    }
+  },
+  "Item": {
+    "types": [
+      "item"
+    ],
+    "item": {
+      "description": "",
+      "quantity": 1,
+      "weight": 0,
+      "attributes": {}
+    }
+  }
+}

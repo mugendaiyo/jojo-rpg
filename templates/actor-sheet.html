@@ -1,0 +1,274 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+        <div class="header-fields">
+            <div class="grid-container3">
+                <div class="grid-item3">
+                    <label for="actor.name" class="resource-label">Name</label>
+                    <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
+                </div>
+                <div class="grid-item3">
+                    <label for="data.age.value" class="resource-label">Age</label>
+                    <input type="text" name="data.age.value" value="{{data.age.value}}" data-dtype="Number"/>
+                </div>
+                <div class="grid-item3">
+                    <label for="data.sex.value" class="resource-label">Sex</label>
+                    <input type="text" name="data.sex.value" value="{{data.sex.value}}" data-dtype="String"/>
+                </div>
+                <div class="grid-item3">
+                    <label for="data.stamina.value" class="resource-label">Stamina</label>
+                    <div class="headerresource">
+                        <input type="text" name="data.stamina.value" value="{{data.stamina.value}}" data-dtype="Number"/>
+                        <span> / </span>
+                        <input type="text" name="data.stamina.max" value="{{data.stamina.max}}" data-dtype="Number"/>
+                    </div>  
+                </div>
+                <div class="grid-item3">
+                    <label for="data.wounds-light.value" class="resource-label">Injuries</label>
+                    <div class="headerresource">
+                        <label>L:</label>
+                        <input type="number" class="woundsbox" name="data.wounds-light.value" value="{{data.wounds-light.value}}"  step="1" min="0" max="4" data-dtype="Number"/>
+                        <label>H:</label>
+                        <input type="number" class="woundsbox" name="data.wounds-heavy.value" value="{{data.wounds-heavy.value}}" min="0" data-dtype="Number"/>
+                        <label>M:</label>
+                        <input type="number" class="woundsbox" name="data.wounds-major.value" value="{{data.wounds-major.value}}" min="0" data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="grid-item3">
+                    <div class="grid-container2" style="background-color: rgba(255, 255, 255, 0);">
+                        <div class="sidebyside">
+                            <label for="data.momentum.value" class="resource-label">Momentum</label>
+                            <div class="momentumcontainer">
+                                <button class="momentumbutton momdec" id="momentum-button-dec"><span>-</span></button>
+                                <input readonly type="string" class="incrementbox" id="increment-box" name="data.momentum.value" value="{{data.momentum.value}}" min="-3" max="3" data-dtype="Number"/>
+                                <button class="momentumbutton mominc" id="momentum-button-inc"><span>+</span></button>
+                            </div>
+                        </div>
+                        <div class="sidebyside">
+                            <label for="data.canAct" class="resource-label">Initiative</label>
+                            <div class="headerresource2">
+                                <a><INPUT type="submit" class="initiative-button" name="" value=""></a>
+                            {{!-- <input name="data.canAct" class="initiative-checkbox" type="checkbox" {{checked data.canAct}}> --}}
+                            {{!-- <input type="checkbox" class="initiative-checkbox" name="data.canAct" {{checked data.canAct}}/> --}}
+                        </div>
+                        </div>
+                    </div>
+ 
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">Character</a>
+        <a class="item" data-tab="stand">Stand</a>
+        <a class="item" data-tab="items">Items</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Stand Tab --}}
+        <div class="tab stand" data-group="primary" data-tab="stand">
+            <div id="standtop">
+            <div class="stand-app-div">
+                <div class="headerresource">
+                    <label for="data.standname" class="standname-label" style="vertical-align: middle; display: inline-block;">Stand Name:</label>
+                    <input type="text" style="text-align:left; width:150px;" name="data.standname" value="{{data.standname}}" data-dtype="String"/>
+                </div>
+                <img class="standImgView" id="stand-img-view" src="/systems/jojo-rpg/images/Stand_Img_Placeholder.png" height="156" width="156">
+                
+                <div class="UrlSrcSetter">
+                    <input id="UrlInput" name="data.standImageURL", value="{{data.standImageURL}}" placeholder="URL to Stand Portrait">
+                    <button class="grab-url">Set</button>
+                </div>
+            </div>
+                <div class="grid-container" id="skillspadding" style="border: 1px solid #726857;">
+                    <div class="grid-item-skills">
+                        <span class="ability-mod rollable" id="largetext" data-roll="1d20" data-momentum="{{data.momentum.value}}" data-ranking="{{data.power.value}}" data-label="Power"><a>Power</a></span>
+                        <div class="resource-content" flexrow flex-center flex-between>
+                            <select name="data.power.value" data-dtype="String">
+                                {{#select data.power.value}}
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                {{/select}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid-item-skills" style="background-color: rgba(255, 255, 255, 0);">
+                        <span class="ability-mod rollable" id="largetext" data-roll="1d20" data-momentum="{{data.momentum.value}}" data-ranking="{{data.speed.value}}" data-label="Speed"><a>Speed</a></span>
+                        <div class="resource-content" flexrow flex-center flex-between>
+                            <select name="data.speed.value" data-dtype="String">
+                                {{#select data.speed.value}}
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                {{/select}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid-item-skills" style="background-color: rgba(255, 255, 255, 0);">
+                        <span class="ability-mod rollable" id="largetext" data-roll="1d20" data-momentum="{{data.momentum.value}}" data-ranking="{{data.durability.value}}" data-label="Durability"><a>Durability</a></span>
+                        <div class="resource-content" flexrow flex-center flex-between>
+                            <select name="data.durability.value" data-dtype="String">
+                                {{#select data.durability.value}}
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                {{/select}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid-item-skills" style="background-color: rgba(255, 255, 255, 0);">
+                        <span class="ability-mod rollable" id="largetext" data-roll="1d20" data-momentum="{{data.momentum.value}}" data-ranking="{{data.precision.value}}" data-label="Precision"><a>Precision</a></span>
+                        <div class="resource-content" flexrow flex-center flex-between>
+                            <select name="data.precision.value" data-dtype="String">
+                                {{#select data.precision.value}}
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                {{/select}}
+                            </select>   
+                        </div>
+                    </div>
+
+                    <div class="grid-item-skills" style="background-color: rgba(255, 255, 255, 0);">
+                        <span class="ability-mod rollable" id="largetext" data-roll="1d20" data-momentum="{{data.momentum.value}}" data-ranking="{{data.range.value}}" data-label="Range"><a>Range</a></span>
+                        <div class="resource-content" flexrow flex-center flex-between>
+                            <select name="data.range.value" data-dtype="String">
+                                {{#select data.range.value}}
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                {{/select}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid-item-skills" style="background-color: rgba(255, 255, 255, 0);">
+                        <span class="ability-mod rollable" id="largetext" data-roll="1d20" data-momentum="{{data.momentum.value}}" data-ranking="{{data.potential.value}}" data-label="Potential"><a>Potential</a></span>
+                        <div class="resource-content" flexrow flex-center flex-between>
+                            <select name="data.potential.value" data-dtype="String">
+                                {{#select data.potential.value}}
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                {{/select}}
+                            </select>
+                        </div>
+                    </div>
+                </div> 
+            <div class="roll-modifier-div">
+                <h2>Modify Roll</h2>
+                <button class="modifier-button-inc" id="modify-button">+</button>
+                <input readonly type="string" class="modifier-box" id="modifier-box" name="data.rollmodifier.value" value="{{data.rollmodifier.value}}" data-dtype="Number"/>
+                <button class="modifier-button-dec" id="modify-button">-</button>
+                <button class="modifier-button-rst">Reset</button>
+            </div>       
+        </div>
+
+        <div id="standbottom">
+            <div class="grid-container-bio">
+                <div class="bio-grid-item">
+                    <h2>Appearance</h2>
+                    <textarea class="textarea-medium" rows="4" name="data.appearancestand">{{data.appearancestand}}</textarea>
+                </div>
+                <div class="bio-grid-item">
+                    <h2>Background</h2>
+                    <textarea class="textarea-medium" rows="4" name="data.backgroundstand">{{data.backgroundstand}}</textarea>
+                </div>
+                <div class="bio-grid-item">
+                    <h2>Abilities</h2>
+                    <textarea class="textarea-medium" rows="5" name="data.abilitiesstand">{{data.abilitiesstand}}</textarea>
+                </div>
+                <div class="bio-grid-item">
+                    <h2>Techniques</h2>
+                    <textarea class="textarea-medium" rows="5" name="data.techniquesstand">{{data.techniquesstand}}</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        {{!-- Biography Tab --}}
+        <div id="bio">
+            <div class="tab biography" data-group="primary" data-tab="description">
+                <div class="preset-rolldiv">
+                    <div class="opaque-cover">
+                        <h3 title="Ordinary humans (and other ordinary non-Stand beings) are considered to be a D-rank for any rolls made by or targeting them."
+                        >Preset Roll <a>(?)</a></h3>
+                        <button value="a" class = "preset-roll-btn" style="height:60px; width:80px;">A-Rank</button>
+                        <button value="b" class = "preset-roll-btn" id="presetRankBtn" style="height:60px; width:80px;">B-Rank</button>
+                        <button value="c" class = "preset-roll-btn" id="presetRankBtn" style="height:60px; width:80px;">C-Rank</button>
+                        <button value="d" class = "preset-roll-btn" id="presetRankBtn" style="height:60px; width:80px;">D-Rank</button>
+                        <button value="e" class = "preset-roll-btn" id="presetRankBtn" style="height:60px; width:80px;">E-Rank</button>
+                    </div>
+                    </div>
+            <div class="grid-container-bio">
+                <div class="bio-grid-item">
+                    <h2>Appearance</h2>
+                    <textarea class="textarea-large" style="resize: none;" rows="9" name="data.appearance">{{data.appearance}}</textarea>
+                </div>
+                <div class="bio-grid-item">
+                    <h2>Background</h2>
+                    <textarea class="textarea-large" style="resize: none;" rows="9" name="data.biography">{{data.biography}}</textarea>
+                </div>
+                <div class="bio-grid-item">
+                    <h2>Impulses</h2>
+                    <textarea class="textarea-large" style="resize: none;" rows="9" name="data.impulses">{{data.impulses}}</textarea>
+                </div>
+                <div class="bio-grid-item">
+                    <h2>Goals</h2>
+                    <textarea class="textarea-large" style="resize: none;" rows="9" name="data.goals">{{data.goals}}</textarea>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        {{!-- Owned Items Tab --}}
+        <div class="tab items" data-group="primary" data-tab="items">
+            <ol class="item-list">
+            {{#each actor.items as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <h4 class="item-name">{{item.name}}</h4>
+                    <div class="item-controls">
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+            {{/each}}
+            </ol>
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            <header class="attributes-header flexrow">
+                <span class="attribute-key">Attribute Key</span>
+                <span class="attribute-value">Value</span>
+                <span class="attribute-label">Label</span>
+                <span class="attribute-dtype">Data Type</span>
+                <a class="attribute-control" data-action="create"><i class="fas fa-plus"></i></a>
+            </header>
+
+        </div>
+    </section>
+</form>
+
