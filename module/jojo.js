@@ -1,6 +1,6 @@
 /*
     Big thanks to Gerdofal of foundryvtt-cyberpunkred, and the kind people on
-    the FoundryVTT for assistance in making this work.
+    the FoundryVTT Discord for assistance in making this work.
     
     Also a massive thank you to Esby for creating this fantastic role-playing system.
 
