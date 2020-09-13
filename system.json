@@ -20,8 +20,8 @@
   "gridUnits": "m",
   "primaryTokenAttribute": "stamina",
   "secondaryTokenAttribute": "momentum",
-  "url": "https://TODO",
-  "manifest": "https://TODO",
+  "url": "https://github.com/slimabob/jojo-rpg/blob/master/README.md",
+  "manifest": "https://github.com/slimabob/jojo-rpg/blob/master/system.json",
   "download": "https://TODO",
   "license": "LICENSE.txt"
 }
