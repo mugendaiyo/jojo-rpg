@@ -7,9 +7,14 @@
   height: 100%;
   padding: 5px;
   overflow-y: hidden;
+    /*background: #424A83 !important;
+    color: hsl(220, 3%, 90%);*/
+}
+.window-header {
+    /*background: #1C224E !important;*/
 }
 .worldbuilding .sheet-header {
-  height: 100px;
+  height: 105px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -67,7 +72,6 @@
 .worldbuilding .sheet-body .tab {
   height: 100%;
   overflow-y: auto;
-    overflow-x: hidden;
 }
 .worldbuilding .editor,
 .worldbuilding .editor-content {
@@ -139,59 +143,131 @@
   min-height: 400px;
 }
 
-#headerstat
-{
-    width: 40px;
+/*.Grid-3Col {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: red;
+}*/
+
+.Column {
+    float: left;
+    width: auto;
 }
 
-#standtop
-{
-    display:flex;
-    padding-bottom: 12px;
+.ColumnRight3 {
+    float: right;
+    width: 33.33%;
+}
+
+.Row {
+}
+
+.Row:after {
+    content:"";
+    display: table;
+    clear: both;
+}
+
+.GridContainer {
+    display: grid;
+    grid-template-columns: 110px 110px 110px;
+    grid-gap: 5px;
+    text-align: left;
+    margin: auto auto;
+}
+
+.GridChild {
+}
+
+.Entry {
+    padding-bottom: 5px;
+    padding-right: 15px;
+}
+
+.Entry h2 {
     text-align: center;
-    background-color: #c5bfb4;
 }
 
-#bio
-{
+.NameDescBox {
     display: block;
-    background-color: rgba(255, 0, 255, 0.8);
-
+    justify-content: center;
+    text-align: center; 
+    padding: 5px;
+    margin-bottom: 4px;
+    /*background: #1C224E !important;*/
+    border: 1px solid black;
+    box-shadow: inset 0px 0px 10px rgba(28, 34, 78, 0.85);
+    background: rgba(0, 0, 0, 0.1);
+    
 }
 
-#largetext{
-    font-size: 18px;
+.CenteredTextDiv {
+    position: relative;
+    text-align: center;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.2);
 }
 
-#removeBG{
-    background-color: rgba(255, 255, 255, 0);
-}
-
-#modify-button{
-    font-size: 32px;
-    width: 45px;
-}
-
-#skillspadding{
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 0;
-}
-
-.momentumcontainer{
+.SideBySide {
     display: flex;
+}
+
+.Row2 {
+    display: flex;
+}
+
+.Column2 {
+    flex: 50%;
+}
+
+.GridEntry {
+    /*border: 1px solid black;*/
+}
+
+.LightWoundsContainer {
+    display: flex;
+}
+
+#lightwounds-button {
+    width: 24px;
+    height: 24px;
+}
+
+.woundsbox {
+    height: 24px;
+    width: 25%;
     text-align: center;
 }
 
-.momentumbutton{
-    width: 25px;
-    height: 25px;
+.preset-roll-btn {
     font-size: 18px;
-    border-radius:5 px;
-    display: inline-block;
+    width: 82px;
+    height: 36px;
 }
 
-.momentumbutton span{
-    display: block;
+.UrlSrcSetter {
+    display: flex;
+}
+
+.momentumbutton {
+    font-size: 16px;
+    width: 24px;
+    height: 24px;
+    
+}
+
+.incrementbox {
+    width: 36px;
+}
+
+.initiative-button {
+    /*background:url(../images/InitiativeButton.png) no-repeat;*/
+    cursor:pointer;
+    width: 48px;
+    height: 24px;
+    border: none;
+    box-shadow: 1px 1px 2px #000000;
 }
 
 .grid-container {
@@ -199,164 +275,47 @@
     grid-template-columns: auto auto;
     padding: 10px;
     background-color: #c5bfb4;
+    text-align: center;
+}
 
+#largetext{
+    font-size: 18px;
 }
 
 .roll-modifier-div{
     border: 1px solid #726857;
-    background-color: rgba(255, 255, 255, 0.8);
+    /*background-color: rgba(255, 255, 255, 0.8);*/
     display: block;
     text-align: center;
     width: 100%;
+    padding: 5px;
 }
 
 .modifier-box{
-    width: 45px;
-    height: 45px;
+    width: 56px;
+    height: 56px;
     font-size: 32px;
     display: block;
-    margin: auto;
+    margin: 5px auto 5px auto;
     text-align: center;
 }
 
-.preset-rolldiv{
-        border: 1px solid #726857;
-    background-color: #c5bfb4;
-    display: block;
-    text-align: center;
-    align-content: center;
+#modify-button{
+    font-size: 32px;
+    width: 45px;
+    padding-bottom: 0px;
 }
 
-.opaque-cover {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px;
-    width: 100%;
-    height: 100%;
+.resource-content {
+    padding-bottom: 5px;
 }
 
-.stand-app-div{
-    text-align: center;
-    border: 1px solid #726857;
-    padding: 2px;
-    width: 250px;
-    background-color: rgba(255, 255, 255, 0.8);
+#DropShadowDeco {
+    border: 1px solid black;
+    box-shadow: inset 0px 0px 10px rgba(28, 34, 78, 0.85);
+    background: rgba(0, 0, 0, 0.1);
 }
 
-.standImgView{
+.StandImgDisplay img{
   box-shadow: 5px 5px 5px grey
-}
-
-.UrlSrcSetter{
-    display: flex;
-    height: 24px;
-    text-align: center;
-    margin: auto;
-}
-
-.standname-label{
-    width: 100px;
-        background-color: rgba(19, 242, 242, 0);
-}
-
-.grid-item {
-  padding: 20px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid #726857;
-}
-
-.grid-item-skills
-{
-    padding: 5px;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0);
-    border: 1px solid #726857;
-}
-
-.headerresource2
-{
-    display: block;
-    text-align: center;
-    margin: auto;
-}
-
-.headerresource2 input {
-    background:url(../images/InitiativeButton.png) no-repeat;
-    cursor:pointer;
-    width: 24px;
-    height: 24px;
-    border: none;
-}
-
-.headerresource2 input:hover {
-    /*background: linear-gradient(rgba(221, 221, 221, 0.3), rgba(118, 118, 118, 0.3)), url(../images/InitiativeButton.png) no-repeat top center;*/
-    box-shadow: 0 4px 8px 0 rgba(254, 125, 208, 0.26), 0 6px 20px 0 rgba(254, 125, 208, 0.26);
-}
-
-
-.bio-grid-item
-{
-  padding: 5px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid #726857;
-}
-
-.grid-container-bio {
-    display: grid;
-    grid-template-columns: auto auto;
-    background-color: #c5bfb4;
-    width: 100%;
-    height: 100%;
-}
-
-.grid-container3{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto;
-    background-color: #c5bfb4;
-    vertical-align: top;
-}
-
-.grid-container2{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    background-color: #c5bfb4;
-    vertical-align: top;
-}
-
-.grid-item3 {
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid #726857;
-    padding: 2px;
-}
-
-.sidebyside {
-    margin-right:inherit;
-    padding: 2px;
-    display: block;
-    width: 100%;
-}
-
-.headerresource{
-    display: flex;
-    text-align: center;
-    background-color: rgba(242, 19, 19, 0);
-}
-
-.incrementbox{
-    display: flex;
-    margin: auto;
-    text-align: center;
-    width: 25px;
-}
-
-.woundsbox
-{
-    display: block;
-    margin: auto;
-    text-align: center;
-    width: 36px;
 }

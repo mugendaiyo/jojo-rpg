@@ -4,8 +4,8 @@ var currentRound = -1;
 
 Hooks.on("updateCombat", async function(combat) {
 
-    console.log(combat.current.round);
-    console.log(currentRound);
+    //console.log(combat.current.round);
+    //console.log(currentRound);
 
     if(combat.current.round == currentRound)
     {
@@ -14,9 +14,9 @@ Hooks.on("updateCombat", async function(combat) {
         currentRound = combat.current.round;
     }
 
-    console.log(combat.current.round);
+    //console.log(combat.current.round);
 
-    console.log("NEW ROUND");
+    //console.log("NEW ROUND");
     if(game.user.isGM && combat.data.round != 0 && combat.turns && combat.data.active)
     {
         //console.log(combat.data.round);

@@ -15,9 +15,9 @@ export class SimpleActorSheet extends ActorSheet {
 	static get defaultOptions() {
 	  return mergeObject(super.defaultOptions, {
   	  classes: ["worldbuilding", "sheet", "actor"],
-  	  template: "systems/jojo-rpg/templates/actor-sheet.html",
-      width: 600,
-      height: 680,
+  	  template: "systems/jojo-rpg/templates/actor-stand-user-sheet.html",
+      width: 850,
+      height: 660,
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
       dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
     });
@@ -68,7 +68,7 @@ export class SimpleActorSheet extends ActorSheet {
       let adjustedRoll = "";
       let styleOverride = "";
       let html = "";
-      let label = "Making a " + btnRank.toUpperCase() + "-Rank roll.";
+      let label = "Making a character " + btnRank.toUpperCase() + "-Rank roll.";
 
       console.log(fResult);
       switch(true)
@@ -146,7 +146,7 @@ export class SimpleActorSheet extends ActorSheet {
       
       roll = this._returnRollFormula(dataset.ranking);
 
-      let modifier = document.getElementById('modifier-box').value;
+      let modifier = document.getElementById(this.actor._id+'-modifier-box').value;
       let momentum = dataset.momentum;
 
       let rollOutcome = roll.roll();
@@ -154,7 +154,7 @@ export class SimpleActorSheet extends ActorSheet {
       let adjustedRoll = "";
       let styleOverride = "";
       let html = "";
-      let label = dataset.label ? `Rolling ${dataset.label} (RANK ${dataset.ranking}).` : '';
+      let label = dataset.label ? `Rolling Stand ${dataset.label} (RANK ${dataset.ranking}).` : '';
 
       console.log(fResult);
       switch(true)
@@ -265,55 +265,55 @@ export class SimpleActorSheet extends ActorSheet {
       li.slideUp(200, () => this.render(false));
     });
 
-    html.find('.modifier-button-inc').click(ev => {
-      var value = parseInt(document.getElementById('modifier-box').value, 10);
+    html.find('.'+this.actor._id+'-modifier-button-inc').click(ev => {
+      var value = parseInt(document.getElementById(this.actor._id+'-modifier-box').value, 10);
       value = isNaN(value)? 0 : value;
       value++;
-      document.getElementById('modifier-box').value = value;
+      document.getElementById(this.actor._id+'-modifier-box').value = value;
     });
 
-    html.find('.modifier-button-dec').click(ev => {
-      var value = parseInt(document.getElementById('modifier-box').value, 10);
+    html.find('.'+this.actor._id+'-modifier-button-dec').click(ev => {
+      var value = parseInt(document.getElementById(this.actor._id+'-modifier-box').value, 10);
       value = isNaN(value)? 0 : value;
       value--;
-      document.getElementById('modifier-box').value = value;
+      document.getElementById(this.actor._id+'-modifier-box').value = value;
     });
 
-    html.find('.modifier-button-rst').click(ev => {
-      var value = parseInt(document.getElementById('modifier-box').value, 10);
+    html.find('.'+this.actor._id+'-modifier-button-rst').click(ev => {
+      var value = parseInt(document.getElementById(this.actor._id+'-modifier-box').value, 10);
       value = isNaN(value)? 0 : value;
       value = 0;
-      document.getElementById('modifier-box').value = value;
+      document.getElementById(this.actor._id+'-modifier-box').value = value;
     });
 
-    html.find('.mominc').click(ev => {
-      var value = parseInt(document.getElementById('increment-box').value, 10);
+    html.find('.'+this.actor._id+'-mominc').click(ev => {
+      var value = parseInt(document.getElementById(this.actor._id+'-increment-box').value, 10);
       value = isNaN(value)? 0 : value;
       value++;
       if(value > 3)
         value = 3;
-      document.getElementById('increment-box').value = value;
+      document.getElementById(this.actor._id+'-increment-box').value = value;
     });
 
-    html.find('.momdec').click(ev => {
-      var value = parseInt(document.getElementById('increment-box').value, 10);
+    html.find('.'+this.actor._id+'-momdec').click(ev => {
+      var value = parseInt(document.getElementById(this.actor._id+'-increment-box').value, 10);
       value = isNaN(value)? 0 : value;
       value--;
       if(value < -3)
         value = -3;
-      document.getElementById('increment-box').value = value;
+      document.getElementById(this.actor._id+'-increment-box').value = value;
     });
 
-    html.find('.grab-url').click(ev => {
+    html.find('.'+this.actor.data._id+'-grab-url').click(ev => {
       var url = this.actor.data.data.standImageURL;
       console.log(url);
-      console.log(document.getElementById('stand-img-view'));
-      console.log(this.actor);
+      //console.log(document.getElementById('stand-img-view'));
+      //console.log(this.actor);
 
       if(url)
-        html.find('.standImgView').src = url;
+        html.find('.'+this.actor.data._id+'-standImgView').src = url;
       else
-        html.find('.standImgView').src = "/systems/jojo-rpg/images/Stand_Img_Placeholder.png"; 
+        html.find('.'+this.actor.data._id+'-standImgView').src = "/systems/jojo-rpg/images/Stand_Img_Placeholder.png"; 
       /*if(url)
         document.getElementById('stand-img-view').src = url;
       else
@@ -358,21 +358,31 @@ export class SimpleActorSheet extends ActorSheet {
       actorCanAct = this.actor.data.data.canAct;
 
 
-      game.combat.setInitiative(linkedCombatant._id, 0);
-
-      if(actorCanAct == true)
+      if(linkedCombatant)
       {
-        this.actor.update({'data.canAct': false});
-        //linkedCombatant.actor.update({'data.canAct': false});
-        _announceInitiativeUse(this.actor.data);
+        game.combat.setInitiative(linkedCombatant._id, 0);
+
+        if(actorCanAct == true)
+        {
+          this.actor.update({'data.canAct': false});
+          //linkedCombatant.actor.update({'data.canAct': false});
+          _announceInitiativeUse(this.actor.data);
+        }else{
+          _jojoLog("This actor cannot act yet!");
+          ChatMessage.create({
+          content: "You've already used your initiative for this round!",
+          type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
+          whisper: [game.user.id]
+        });
+      }
       }else{
-        _jojoLog("This actor cannot act yet!");
+        _jojoLog("This actor is not a part of any combat!");
         ChatMessage.create({
-        content: "You've already used your initiative for this round!",
+        content: "You must be part of a combat to use your initiative!",
         type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
         whisper: [game.user.id]
       });
-    }
+      }
 
 
       //console.log(this.actor.data.data);
@@ -430,9 +440,9 @@ export class SimpleActorSheet extends ActorSheet {
 
     if(this.actor.data.data.standImageURL)
     {
-      if(document.getElementById('stand-img-view'))
+      if(document.getElementById(this.actor.data._id+'-stand-img-view'))
       {
-        document.getElementById('stand-img-view').src = this.actor.data.data.standImageURL;
+        document.getElementById(this.actor.data._id+'-stand-img-view').src = this.actor.data.data.standImageURL;
         //this.actor.update();
       }
     }

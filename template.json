@@ -15,7 +15,10 @@
         "backgroundstand":"",
         "abilitiesstand":"",
         "techniquesstand":"",
-        "standname":""
+        "standname":"",
+        "playerNotes":"",
+        "alliesAndEnemies":"",
+        "playerEquipment":""
       }
     },
     "character": {
