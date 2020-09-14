@@ -20,6 +20,6 @@ Also a massive thank you to Esby for creating this fantastic role-playing system
 
 I sincerely hope that everyone has fun creating their own stories in Hirohiko Araki's wonderful world.
 
-Stand Proud 🖤
+[Stand Proud](https://www.youtube.com/watch?v=lviyLEF7lPE) 🖤
 
    \- Collin
