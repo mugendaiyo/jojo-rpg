@@ -304,6 +304,22 @@ export class SimpleActorSheet extends ActorSheet {
       document.getElementById(this.actor._id+'-increment-box').value = value;
     });
 
+    html.find('.'+this.actor._id+'-LightWounds-Inc').click(ev => {
+      var value = parseInt(document.getElementById(this.actor._id+'-currentlightwounds').value, 10);
+      value = isNaN(value)? 0 : value;
+      value++;
+      document.getElementById(this.actor._id+'-currentlightwounds').value = value;
+    });
+
+    html.find('.'+this.actor._id+'-LightWounds-Dec').click(ev => {
+      var value = parseInt(document.getElementById(this.actor._id+'-currentlightwounds').value, 10);
+      value = isNaN(value)? 0 : value;
+      value--;
+      if(value < 0)
+        value = 0;
+      document.getElementById(this.actor._id+'-currentlightwounds').value = value;
+    });
+
     html.find('.'+this.actor.data._id+'-grab-url').click(ev => {
       var url = this.actor.data.data.standImageURL;
       console.log(url);
