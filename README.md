@@ -12,6 +12,13 @@
 - Click 'Begin Combat'.
 
 Each player will be given an initiative token that they can expend once per-round to perform an action. In order to refund expended tokens, advance to the next round of combat.
+
+# How to Install
+ Because this is an unofficial ruleset, and I have no way to get in touch with the license holders of JoJo's Bizarre Adventure to ask for permission, this system cannot be listed on the official FoundryVTT directory. To manually install:
+ 
+ - Download the latest release [HERE](https://github.com/slimabob/jojo-rpg/archive/master.zip).
+ - Extract the zip file into your `FoundryVTT\Data\systems\` folder.
+ - Rename *jojo-rpg-master* to *jojo-rpg*
  
  # Thanks to
 A big thanks to Gerdofal of [foundryvtt-cyberpunkred](https://github.com/Gerdofal/foundryvtt-cyberpunkred), and the kind people on the FoundryVTT Discord for assistance in making this work.
