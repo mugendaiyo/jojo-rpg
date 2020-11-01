@@ -1,10 +1,10 @@
 {
   "name": "jojo-rpg",
   "title": "JoJo's Bizarre Adventure: The RPG v1.4",
-  "description": "A tabletop RPG system aimed at giving players the experience of building their own JoJo stories. Player's handbook: https://docs.google.com/document/d/1ReSnZDUvIhpCG0X_8S5C-7P5vBRUb0P08gedAvs0oMc/edit#",
+  "description": "A tabletop RPG system aimed at giving players the experience of building their own JoJo stories.",
   "version": 1.0,
   "minimumCoreVersion": "0.5.6",
-  "compatibleCoreVersion": "0.6.7",
+  "compatibleCoreVersion": "0.7.5",
   "templateVersion": 2,
   "author": "CLyonsDev",
   "scripts": [
