@@ -2,7 +2,7 @@
   "name": "jojo-rpg",
   "title": "JoJo's Bizarre Adventure: The RPG v1.4",
   "description": "A tabletop RPG system aimed at giving players the experience of building their own JoJo stories.",
-  "version": 1.0,
+  "version": "1.0",
   "minimumCoreVersion": "0.5.6",
   "compatibleCoreVersion": "0.7.5",
   "templateVersion": 2,
